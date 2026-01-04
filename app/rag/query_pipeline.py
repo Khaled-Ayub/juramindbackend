@@ -160,11 +160,14 @@ def analyze_contract_with_rag(
     # Modell-Info hinzufügen
     model_used = settings.ANTHROPIC_MODEL if llm_provider == "anthropic" else settings.OPENAI_MODEL
     
+    # Flache Struktur zurückgeben (nicht verschachtelt)
+    # Frontend erwartet summary, risk_score, etc. direkt
     return {
-        "analysis": analysis,
+        **analysis,  # Spread: summary, risk_score, clauses, etc.
         "sources": sources,
         "provider": llm_provider,
-        "model": model_used,
+        "model_used": model_used,
+        "rag_enabled": True,
         "documents_used": len(sources)
     }
 
@@ -172,6 +175,7 @@ def analyze_contract_with_rag(
 def _parse_llm_response(response: str) -> Dict[str, Any]:
     """
     Parst die LLM-Antwort und extrahiert das JSON.
+    Sehr robust - versucht mehrere Methoden.
     
     Args:
         response: Rohe LLM-Antwort
@@ -179,37 +183,93 @@ def _parse_llm_response(response: str) -> Dict[str, Any]:
     Returns:
         Geparstes JSON oder Fallback-Dict
     """
+    if not response:
+        return _create_fallback_response("Leere Antwort vom LLM")
+    
+    # Bereinigen: Whitespace trimmen
+    cleaned = response.strip()
+    
+    # Methode 1: Direkt parsen (wenn LLM nur JSON zurückgibt)
     try:
-        # Versuche direkt zu parsen
-        return json.loads(response)
+        result = json.loads(cleaned)
+        if isinstance(result, dict) and "summary" in result:
+            return result
     except json.JSONDecodeError:
         pass
     
+    # Methode 2: JSON aus Markdown Code-Block extrahieren
     try:
-        # JSON aus Markdown Code-Block extrahieren
-        json_match = re.search(r'```(?:json)?\s*([\s\S]*?)\s*```', response)
+        json_match = re.search(r'```(?:json)?\s*([\s\S]*?)\s*```', cleaned)
         if json_match:
-            return json.loads(json_match.group(1))
+            result = json.loads(json_match.group(1).strip())
+            if isinstance(result, dict):
+                return result
     except json.JSONDecodeError:
         pass
     
+    # Methode 3: Erstes vollständiges JSON-Objekt finden (greedy)
     try:
-        # JSON-Objekt aus Text extrahieren
-        json_match = re.search(r'\{[\s\S]*\}', response)
+        # Finde die erste öffnende Klammer
+        start_idx = cleaned.find('{')
+        if start_idx != -1:
+            # Finde die passende schließende Klammer
+            depth = 0
+            for i, char in enumerate(cleaned[start_idx:], start_idx):
+                if char == '{':
+                    depth += 1
+                elif char == '}':
+                    depth -= 1
+                    if depth == 0:
+                        json_str = cleaned[start_idx:i+1]
+                        result = json.loads(json_str)
+                        if isinstance(result, dict):
+                            return result
+                        break
+    except json.JSONDecodeError:
+        pass
+    
+    # Methode 4: Letzte Chance - suche nach JSON-Struktur
+    try:
+        json_match = re.search(r'\{[^{}]*"summary"[^{}]*\}', cleaned, re.DOTALL)
         if json_match:
             return json.loads(json_match.group())
     except json.JSONDecodeError:
         pass
     
-    # Fallback: Rohe Antwort als Summary
+    # Fallback: Extrahiere was geht aus dem Text
+    return _create_fallback_response(cleaned)
+
+
+def _create_fallback_response(raw_text: str) -> Dict[str, Any]:
+    """
+    Erstellt eine Fallback-Response wenn JSON-Parsing fehlschlägt.
+    Versucht trotzdem nützliche Infos zu extrahieren.
+    """
+    # Versuche Summary aus dem Text zu extrahieren
+    summary = raw_text
+    
+    # Wenn es wie JSON aussieht, extrahiere nur den Summary-Wert
+    summary_match = re.search(r'"summary"\s*:\s*"([^"]+)"', raw_text)
+    if summary_match:
+        summary = summary_match.group(1)
+    else:
+        # Ersten sinnvollen Satz als Summary nehmen
+        sentences = raw_text.split('.')
+        if sentences:
+            summary = '. '.join(sentences[:3]) + '.' if len(sentences) > 3 else raw_text
+    
+    # Kürzen wenn zu lang
+    if len(summary) > 500:
+        summary = summary[:497] + "..."
+    
     return {
-        "summary": response[:500] if len(response) > 500 else response,
+        "summary": summary,
         "risk_score": 50,
         "overall_risk_level": "medium",
         "clauses": [],
         "missing_clauses": [],
         "positive_aspects": [],
-        "parse_error": "JSON konnte nicht aus LLM-Antwort extrahiert werden"
+        "parse_warning": "Analyse konnte nicht vollständig strukturiert werden"
     }
 
 

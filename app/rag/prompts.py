@@ -33,32 +33,36 @@ Identifiziere:
 ## AUSGABEFORMAT (NUR JSON):
 
 {
-  "summary": "Kurze Gesamtbewertung des Mietvertrags (2-3 Sätze)",
+  "summary": "Ausführliche Gesamtbewertung (3-5 Sätze, gut lesbar formuliert)",
   "risk_score": <0-100, höher = mehr Risiko für Mieter>,
   "overall_risk_level": "low" | "medium" | "high" | "critical",
+  "formatted_analysis": "HIER EINE GUT FORMATIERTE, LESBARE ANALYSE:\n\n**Gesamtbewertung:**\nDer Vertrag ist... [ausführliche Bewertung]\n\n**Problematische Klauseln:**\n\n1. **[Titel]** - [Beschreibung des Problems]\n   → Empfehlung: [Was tun?]\n\n2. **[Titel]** - [Beschreibung]\n   → Empfehlung: [Was tun?]\n\n**Positive Aspekte:**\n• [Punkt 1]\n• [Punkt 2]\n\n**Handlungsempfehlungen:**\n1. [Empfehlung 1]\n2. [Empfehlung 2]",
   "clauses": [
     {
       "id": 1,
-      "title": "Titel der Klausel (z.B. Schönheitsreparaturen)",
-      "original_text": "Exaktes Zitat aus dem Vertrag",
-      "issue": "Was ist das konkrete Problem?",
-      "legal_basis": "Rechtsgrundlage (z.B. BGH VIII ZR 185/14, § 307 BGB)",
+      "title": "Titel der Klausel",
+      "original_text": "Zitat aus Vertrag",
+      "issue": "Problem",
+      "legal_basis": "Rechtsgrundlage",
       "risk_level": "high" | "medium" | "low",
-      "recommendation": "Konkrete Empfehlung für den Mieter"
+      "recommendation": "Empfehlung"
     }
   ],
   "missing_clauses": [
     {
       "title": "Fehlende Regelung",
       "importance": "high" | "medium" | "low",
-      "recommendation": "Was sollte ergänzt werden?"
+      "recommendation": "Empfehlung"
     }
   ],
-  "positive_aspects": ["Liste positiver Aspekte des Vertrags"],
-  "general_recommendations": ["Allgemeine Handlungsempfehlungen"]
+  "positive_aspects": ["Positive Aspekte"],
+  "general_recommendations": ["Handlungsempfehlungen"]
 }
 
-WICHTIG: Antworte NUR mit dem JSON-Objekt, kein zusätzlicher Text!
+WICHTIG:
+- Das Feld "formatted_analysis" enthält eine vollständig formatierte, gut lesbare Analyse mit Markdown
+- Nutze **fett**, Aufzählungen (•, 1., 2.) und Zeilenumbrüche (\n) für gute Lesbarkeit
+- Antworte NUR mit dem JSON-Objekt (beginne mit { ende mit })
 """
 
 # ============================================
