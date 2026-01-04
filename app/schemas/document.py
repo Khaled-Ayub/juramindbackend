@@ -102,6 +102,24 @@ class KeyTerms(BaseModel):
     amounts: List[Dict[str, Any]] = Field(default=[], description="Beträge und Werte")
 
 
+class RAGSource(BaseModel):
+    """
+    Quelle aus der Wissensbasis (RAG)
+    """
+    content: str = Field(..., description="Auszug aus der Quelle")
+    source: str = Field(..., description="Dateiname oder Quelle")
+    score: Optional[float] = Field(None, description="Relevanz-Score")
+
+
+class MissingClause(BaseModel):
+    """
+    Fehlende Vertragsklausel
+    """
+    title: str = Field(..., description="Fehlende Regelung")
+    importance: str = Field(..., description="Wichtigkeit: high/medium/low")
+    recommendation: str = Field(..., description="Empfehlung was ergänzt werden sollte")
+
+
 class DocumentAnalysisResponse(BaseModel):
     """
     Vollständige Analyse-Response
@@ -129,8 +147,24 @@ class DocumentAnalysisResponse(BaseModel):
     
     # Detaillierte Ergebnisse
     clauses: Optional[List[ClauseAnalysis]] = None
+    missing_clauses: Optional[List[MissingClause]] = None
+    positive_aspects: Optional[List[str]] = None
     recommendations: Optional[List[RecommendationItem]] = None
     key_terms: Optional[KeyTerms] = None
+    
+    # RAG-spezifische Felder
+    sources: Optional[List[RAGSource]] = Field(
+        None,
+        description="Verwendete Quellen aus der Wissensbasis"
+    )
+    rag_enabled: bool = Field(
+        default=False,
+        description="Ob RAG für diese Analyse verwendet wurde"
+    )
+    documents_used: int = Field(
+        default=0,
+        description="Anzahl verwendeter Kontext-Dokumente"
+    )
     
     # Metadaten
     model_used: Optional[str]
@@ -173,6 +207,11 @@ class AnalysisRequest(BaseModel):
 class TextAnalysisRequest(BaseModel):
     """
     Direkte Text-Analyse (ohne Dokument-Upload)
+    
+    RAG-Modus:
+    - use_rag=True aktiviert die Wissensbasis
+    - contract_type bestimmt welche Wissensbasis (mietvertrag, arbeitsvertrag, etc.)
+    - rag_top_k bestimmt wie viele Kontext-Dokumente verwendet werden
     """
     text: str = Field(
         ...,
@@ -191,6 +230,22 @@ class TextAnalysisRequest(BaseModel):
     provider: Optional[str] = Field(
         default=None,
         description="KI-Provider: 'openai' oder 'anthropic' (Standard aus Config)"
+    )
+    
+    # RAG-spezifische Felder
+    use_rag: bool = Field(
+        default=True,
+        description="RAG aktivieren (Wissensbasis mit BGB, BGH-Urteilen)"
+    )
+    contract_type: str = Field(
+        default="mietvertrag",
+        description="Vertragsart für RAG (mietvertrag, arbeitsvertrag, kaufvertrag, kfz, gewerbe, sonstige)"
+    )
+    rag_top_k: Optional[int] = Field(
+        default=8,
+        ge=1,
+        le=20,
+        description="Anzahl der abzurufenden Kontext-Dokumente (1-20)"
     )
 
 

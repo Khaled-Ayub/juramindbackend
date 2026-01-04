@@ -1,0 +1,174 @@
+# Checkliste: Unwirksame Mietvertragsklauseln
+
+Diese Checkliste enthält typische unwirksame Klauseln in Mietverträgen nach aktueller BGH-Rechtsprechung.
+
+---
+
+## 1. SCHÖNHEITSREPARATUREN
+
+### Unwirksam:
+- ❌ Starre Renovierungsfristen ("alle 3 Jahre Bad/Küche", "alle 5 Jahre Wohnräume")
+- ❌ Quotenklauseln bei Auszug ("anteilige Kosten wenn vor Frist ausgezogen")
+- ❌ Farbwahlklauseln bei Auszug ("weiß streichen", "neutrale Farben")
+- ❌ Renovierungspflicht bei unrenoviert übernommener Wohnung ohne Ausgleich
+- ❌ Endrenovierungsklauseln ("bei Auszug immer renovieren")
+- ❌ Professionelle Renovierung durch Fachfirma vorgeschrieben
+
+### Wirksam:
+- ✓ Flexible Renovierungsklauseln ("bei Bedarf", "wenn erforderlich")
+- ✓ Renovierungspflicht bei renoviert übernommener Wohnung (ohne starre Fristen)
+
+---
+
+## 2. KAUTION
+
+### Unwirksam:
+- ❌ Kaution über 3 Monatskaltmieten (Warmmiete zählt nicht!)
+- ❌ Einbeziehung von Betriebskosten in Kautionsberechnung
+- ❌ Ausschließlich Barkaution (Mieter hat Wahlrecht)
+- ❌ Verzicht auf Verzinsung der Kaution
+- ❌ Kaution sofort in voller Höhe fällig (Ratenzahlung ist Mieterrecht)
+
+### Wirksam:
+- ✓ Maximal 3 Monatsnettokaltmieten
+- ✓ Ratenzahlung in 3 gleichen Monatsraten
+- ✓ Verschiedene Sicherungsformen (Bankbürgschaft, Sparbuch, Kautionsversicherung)
+
+---
+
+## 3. TIERHALTUNG
+
+### Unwirksam:
+- ❌ Generelles Tierhaltungsverbot ("Tierhaltung ist untersagt")
+- ❌ Pauschales Verbot von Hunden und Katzen ohne Einzelfallprüfung
+- ❌ Verbot von Kleintieren (Hamster, Fische, Vögel, Kaninchen im Käfig)
+
+### Wirksam:
+- ✓ Erlaubnisvorbehalt ("Haltung von Hunden/Katzen bedarf der Zustimmung")
+- ✓ Einzelfallprüfung bei größeren Tieren
+
+---
+
+## 4. BETRIEBSKOSTEN / NEBENKOSTEN
+
+### Unwirksam - Nicht umlagefähige Kosten:
+- ❌ Verwaltungskosten
+- ❌ Instandhaltungskosten
+- ❌ Instandsetzungskosten
+- ❌ Instandhaltungsrücklagen
+- ❌ Reparaturkosten
+- ❌ Bankgebühren des Vermieters
+- ❌ Rechtskosten / Mahnkosten
+- ❌ Kosten für Leerstand
+- ❌ Nicht in BetrKV genannte Kosten
+
+### Wirksam - Nur Kosten nach BetrKV:
+- ✓ Grundsteuer
+- ✓ Wasserversorgung, Entwässerung
+- ✓ Heizung, Warmwasser
+- ✓ Aufzug
+- ✓ Straßenreinigung, Müllbeseitigung
+- ✓ Gebäudereinigung
+- ✓ Gartenpflege
+- ✓ Beleuchtung (Gemeinschaftsflächen)
+- ✓ Schornsteinreinigung
+- ✓ Versicherungen (Gebäude, Haftpflicht)
+- ✓ Hauswart (nur Betriebskosten-Anteil)
+
+---
+
+## 5. KÜNDIGUNG
+
+### Unwirksam:
+- ❌ Kündigungsausschluss über 4 Jahre
+- ❌ Einseitiger Kündigungsausschluss nur für Mieter
+- ❌ Kündigungsverzicht im Formularvertrag
+- ❌ Verkürzte Kündigungsfristen unter gesetzlichem Minimum
+- ❌ Verlängerte Kündigungsfristen für Mieter über gesetzliches Maximum
+
+### Wirksam:
+- ✓ Beidseitiger Kündigungsausschluss bis zu 4 Jahren
+- ✓ Gesetzliche Kündigungsfristen (3 Monate, nach 5 Jahren: 6 Monate, nach 8 Jahren: 9 Monate)
+
+---
+
+## 6. UNTERVERMIETUNG
+
+### Unwirksam:
+- ❌ Generelles Untervermietungsverbot
+- ❌ Pauschales Versagungsrecht des Vermieters
+- ❌ Ausschluss von § 553 BGB (Anspruch auf Erlaubnis bei berechtigtem Interesse)
+
+### Wirksam:
+- ✓ Erlaubnisvorbehalt mit Einzelfallprüfung
+- ✓ Untervermietungszuschlag (bei Zumutbarkeit)
+
+---
+
+## 7. KLEINREPARATUREN
+
+### Unwirksam:
+- ❌ Keine Höchstgrenze pro Reparatur
+- ❌ Einzelreparatur über 100-120 EUR
+- ❌ Keine Jahreshöchstgrenze
+- ❌ Jahreshöchstgrenze über 8% der Jahresmiete
+- ❌ Einbeziehung von Gegenständen ohne häufigen Mieterzugriff
+
+### Wirksam:
+- ✓ Einzelreparatur max. 100-120 EUR
+- ✓ Jahreshöchstgrenze 6-8% der Jahresmiete
+- ✓ Nur Gegenstände mit häufigem Mieterzugriff (Wasserhähne, Türgriffe, Lichtschalter, etc.)
+
+---
+
+## 8. BESICHTIGUNG
+
+### Unwirksam:
+- ❌ Pauschales Besichtigungsrecht ohne Anlass
+- ❌ Jederzeitiges Zutrittsrecht
+- ❌ Regelmäßige Besichtigungen ohne konkreten Grund
+
+### Wirksam:
+- ✓ Besichtigung bei konkretem Anlass (Verkauf, Mängelanzeige, Zählerablesung)
+- ✓ Vorherige Ankündigung (angemessene Frist, üblicherweise 24-48 Stunden)
+- ✓ Zu angemessenen Uhrzeiten
+
+---
+
+## 9. SONSTIGE UNWIRKSAME KLAUSELN
+
+### Unwirksam:
+- ❌ Vertragsstrafenklauseln in Wohnraummietverträgen
+- ❌ Professionelle Endreinigung ohne Rücksicht auf Einzugszustand
+- ❌ Professionelle Teppichbodenreinigung bei Auszug
+- ❌ Pflicht zur Übernahme von Einbauten des Vormieters
+- ❌ Ausschluss der Mietminderung
+- ❌ Ausschluss des Zurückbehaltungsrechts
+- ❌ Vollständiger Haftungsausschluss des Vermieters
+- ❌ Mieterhöhung nach freiem Ermessen des Vermieters
+- ❌ Automatische Verlängerung mit langen Bindungsfristen
+
+---
+
+## ZUSAMMENFASSUNG: Typische Warnzeichen
+
+Bei folgenden Formulierungen genau prüfen:
+
+1. **Starre Fristen** → meist unwirksam
+2. **"immer", "stets", "generell"** → oft zu pauschal
+3. **"auf Kosten des Mieters"** → prüfen ob umlagefähig
+4. **"ohne Ausnahme"** → fehlt Einzelfallprüfung
+5. **Hohe Geldbeträge** → Grenzen prüfen (Kaution, Kleinreparaturen)
+6. **Einseitige Verpflichtungen** → nur für Mieter? Oft unwirksam
+7. **Ausschluss gesetzlicher Rechte** → kritisch prüfen
+
+---
+
+## RECHTSFOLGE BEI UNWIRKSAMKEIT
+
+Wenn eine Klausel unwirksam ist:
+- Die unwirksame Klausel entfällt ersatzlos
+- Es gilt die gesetzliche Regelung
+- Der restliche Vertrag bleibt wirksam
+- Der Mieter kann sich darauf berufen
+- Keine "geltungserhaltende Reduktion" bei Formularverträgen

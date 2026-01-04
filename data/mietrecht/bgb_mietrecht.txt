@@ -1,0 +1,134 @@
+# BGB Mietrecht - §§ 535-580a (Auszug relevanter Paragraphen)
+
+## § 535 Inhalt und Hauptpflichten des Mietvertrags
+
+(1) Durch den Mietvertrag wird der Vermieter verpflichtet, dem Mieter den Gebrauch der Mietsache während der Mietzeit zu gewähren. Der Vermieter hat die Mietsache dem Mieter in einem zum vertragsgemäßen Gebrauch geeigneten Zustand zu überlassen und sie während der Mietzeit in diesem Zustand zu erhalten. Er hat die auf der Mietsache ruhenden Lasten zu tragen.
+
+(2) Der Mieter ist verpflichtet, dem Vermieter die vereinbarte Miete zu entrichten.
+
+---
+
+## § 536 Mietminderung bei Sach- und Rechtsmängeln
+
+(1) Hat die Mietsache zur Zeit der Überlassung an den Mieter einen Mangel, der ihre Tauglichkeit zum vertragsgemäßen Gebrauch aufhebt, oder entsteht während der Mietzeit ein solcher Mangel, so ist der Mieter für die Zeit, in der die Tauglichkeit aufgehoben ist, von der Entrichtung der Miete befreit. Für die Zeit, während der die Tauglichkeit gemindert ist, hat er nur eine angemessen herabgesetzte Miete zu entrichten. Eine unerhebliche Minderung der Tauglichkeit bleibt außer Betracht.
+
+(2) Absatz 1 Satz 1 und 2 gilt auch, wenn eine zugesicherte Eigenschaft fehlt oder später wegfällt.
+
+---
+
+## § 543 Außerordentliche fristlose Kündigung aus wichtigem Grund
+
+(1) Jede Vertragspartei kann das Mietverhältnis aus wichtigem Grund außerordentlich fristlos kündigen. Ein wichtiger Grund liegt vor, wenn dem Kündigenden unter Berücksichtigung aller Umstände des Einzelfalls, insbesondere eines Verschuldens der Vertragsparteien, und unter Abwägung der beiderseitigen Interessen die Fortsetzung des Mietverhältnisses bis zum Ablauf der Kündigungsfrist oder bis zur sonstigen Beendigung des Mietverhältnisses nicht zugemutet werden kann.
+
+(2) Ein wichtiger Grund liegt insbesondere vor, wenn
+1. dem Mieter der vertragsgemäße Gebrauch der Mietsache ganz oder zum Teil nicht rechtzeitig gewährt oder wieder entzogen wird,
+2. der Mieter die Rechte des Vermieters dadurch in erheblichem Maße verletzt, dass er die Mietsache durch Vernachlässigung der ihm obliegenden Sorgfalt erheblich gefährdet oder sie unbefugt einem Dritten überlässt, oder
+3. der Mieter
+   a) für zwei aufeinander folgende Termine mit der Entrichtung der Miete oder eines nicht unerheblichen Teils der Miete in Verzug ist oder
+   b) in einem Zeitraum, der sich über mehr als zwei Termine erstreckt, mit der Entrichtung der Miete in Höhe eines Betrages in Verzug ist, der die Miete für zwei Monate erreicht.
+
+---
+
+## § 551 Begrenzung und Anlage von Mietsicherheiten
+
+(1) Hat der Mieter dem Vermieter für die Erfüllung seiner Pflichten Sicherheit zu leisten, so darf diese vorbehaltlich des Absatzes 3 Satz 4 höchstens das Dreifache der auf einen Monat entfallenden Miete ohne die als Pauschale oder als Vorauszahlung ausgewiesenen Betriebskosten betragen.
+
+(2) Ist als Sicherheit eine Geldsumme bereitzustellen, so ist der Mieter zu drei gleichen monatlichen Teilzahlungen berechtigt. Die erste Teilzahlung ist zu Beginn des Mietverhältnisses fällig.
+
+(3) Der Vermieter hat eine ihm als Sicherheit überlassene Geldsumme bei einem Kreditinstitut zu dem für Spareinlagen mit dreimonatiger Kündigungsfrist üblichen Zinssatz anzulegen. Die Vertragsparteien können eine andere Anlageform vereinbaren. In beiden Fällen muss die Anlage vom Vermögen des Vermieters getrennt erfolgen und stehen die Erträge dem Mieter zu.
+
+---
+
+## § 553 Gestattung der Gebrauchsüberlassung an Dritte
+
+(1) Entsteht für den Mieter nach Abschluss des Mietvertrags ein berechtigtes Interesse, einen Teil des Wohnraums einem Dritten zum Gebrauch zu überlassen, so kann er von dem Vermieter die Erlaubnis hierzu verlangen. Dies gilt nicht, wenn in der Person des Dritten ein wichtiger Grund vorliegt, der Wohnraum übermäßig belegt würde oder dem Vermieter die Überlassung aus sonstigen Gründen nicht zugemutet werden kann.
+
+(2) Ist dem Vermieter die Überlassung nur bei einer angemessenen Erhöhung der Miete zuzumuten, so kann er die Erlaubnis davon abhängig machen, dass der Mieter sich mit einer solchen Erhöhung einverstanden erklärt.
+
+---
+
+## § 556 Vereinbarungen über Betriebskosten
+
+(1) Die Vertragsparteien können vereinbaren, dass der Mieter Betriebskosten trägt. Betriebskosten sind die Kosten, die dem Eigentümer oder Erbbauberechtigten durch das Eigentum oder das Erbbaurecht am Grundstück oder durch den bestimmungsmäßigen Gebrauch des Gebäudes, der Nebengebäude, Anlagen, Einrichtungen und des Grundstücks laufend entstehen. Für die Aufstellung der Betriebskosten gilt die Betriebskostenverordnung.
+
+(2) Die Vertragsparteien können vorbehaltlich anderweitiger Vorschriften vereinbaren, dass Betriebskosten als Pauschale oder als Vorauszahlung ausgewiesen werden. Vorauszahlungen für Betriebskosten dürfen nur in angemessener Höhe vereinbart werden.
+
+(3) Über die Vorauszahlungen für Betriebskosten ist jährlich abzurechnen; dabei ist der Grundsatz der Wirtschaftlichkeit zu beachten. Die Abrechnung ist dem Mieter spätestens bis zum Ablauf des zwölften Monats nach Ende des Abrechnungszeitraums mitzuteilen.
+
+---
+
+## § 556a Abrechnungsmaßstab für Betriebskosten
+
+(1) Haben die Vertragsparteien nichts anderes vereinbart, sind die Betriebskosten vorbehaltlich anderweitiger Vorschriften nach dem Anteil der Wohnfläche umzulegen.
+
+(2) Haben die Vertragsparteien etwas anderes vereinbart, kann der Vermieter durch Erklärung in Textform bestimmen, dass die Betriebskosten zukünftig abweichend von der getroffenen Vereinbarung ganz oder teilweise nach einem Maßstab umgelegt werden dürfen, der dem erfassten unterschiedlichen Verbrauch oder der erfassten unterschiedlichen Verursachung Rechnung trägt.
+
+---
+
+## § 557 Mieterhöhungen nach Vereinbarung oder Gesetz
+
+(1) Während des Mietverhältnisses können die Parteien eine Erhöhung der Miete vereinbaren.
+
+(2) Künftige Änderungen der Miethöhe können die Vertragsparteien als Staffelmiete nach § 557a oder als Indexmiete nach § 557b vereinbaren.
+
+---
+
+## § 558 Mieterhöhung bis zur ortsüblichen Vergleichsmiete
+
+(1) Der Vermieter kann die Zustimmung zu einer Erhöhung der Miete bis zur ortsüblichen Vergleichsmiete verlangen, wenn die Miete in dem Zeitpunkt, zu dem die Erhöhung eintreten soll, seit 15 Monaten unverändert ist. Das Mieterhöhungsverlangen kann frühestens ein Jahr nach der letzten Mieterhöhung geltend gemacht werden.
+
+(2) Die ortsübliche Vergleichsmiete wird gebildet aus den üblichen Entgelten, die in der Gemeinde oder einer vergleichbaren Gemeinde für Wohnraum vergleichbarer Art, Größe, Ausstattung, Beschaffenheit und Lage einschließlich der energetischen Ausstattung und Beschaffenheit in den letzten sechs Jahren vereinbart oder geändert worden sind.
+
+(3) Bei Erhöhungen nach Absatz 1 darf sich die Miete innerhalb von drei Jahren nicht um mehr als 20 vom Hundert erhöhen (Kappungsgrenze).
+
+---
+
+## § 559 Mieterhöhung nach Modernisierungsmaßnahmen
+
+(1) Hat der Vermieter Modernisierungsmaßnahmen im Sinne des § 555b Nummer 1, 3, 4, 5 oder 6 durchgeführt, so kann er die jährliche Miete um 8 Prozent der für die Wohnung aufgewendeten Kosten erhöhen.
+
+---
+
+## § 568 Form und Inhalt der Kündigung
+
+(1) Die Kündigung des Mietverhältnisses bedarf der schriftlichen Form.
+
+(2) Der Vermieter soll den Mieter auf die Möglichkeit, die Form und die Frist des Widerspruchs nach den §§ 574 bis 574b rechtzeitig hinweisen.
+
+---
+
+## § 573 Ordentliche Kündigung des Vermieters
+
+(1) Der Vermieter kann nur kündigen, wenn er ein berechtigtes Interesse an der Beendigung des Mietverhältnisses hat.
+
+(2) Ein berechtigtes Interesse des Vermieters an der Beendigung des Mietverhältnisses liegt insbesondere vor, wenn
+1. der Mieter seine vertraglichen Pflichten schuldhaft nicht unerheblich verletzt hat,
+2. der Vermieter die Räume als Wohnung für sich, seine Familienangehörigen oder Angehörige seines Haushalts benötigt (Eigenbedarf) oder
+3. der Vermieter durch die Fortsetzung des Mietverhältnisses an einer angemessenen wirtschaftlichen Verwertung des Grundstücks gehindert und dadurch erhebliche Nachteile erleiden würde.
+
+---
+
+## § 573c Fristen der ordentlichen Kündigung
+
+(1) Die Kündigung ist spätestens am dritten Werktag eines Kalendermonats zum Ablauf des übernächsten Monats zulässig. Nach fünf und acht Jahren seit der Überlassung des Wohnraums verlängert sich die Kündigungsfrist jeweils um drei Monate.
+
+(2) Bei Wohnraum, der nur zum vorübergehenden Gebrauch vermietet worden ist, kann eine kürzere Kündigungsfrist vereinbart werden.
+
+---
+
+## § 575 Zeitmietvertrag
+
+(1) Ein Mietverhältnis kann auf bestimmte Zeit eingegangen werden, wenn der Vermieter nach Ablauf der Mietzeit
+1. die Räume als Wohnung für sich, seine Familienangehörigen oder Angehörige seines Haushalts nutzen will,
+2. in zulässiger Weise die Räume beseitigen oder so wesentlich verändern oder instand setzen will, dass die Maßnahmen durch eine Fortsetzung des Mietverhältnisses erheblich erschwert würden, oder
+3. die Räume an einen zur Dienstleistung Verpflichteten vermieten will.
+
+Der Vermieter hat dem Mieter den Grund der Befristung bei Vertragsschluss schriftlich mitzuteilen.
+
+---
+
+## § 578 Mietverhältnisse über Grundstücke und Räume
+
+(1) Auf Mietverhältnisse über Grundstücke sind die Vorschriften der §§ 550, 554, 562 bis 562d, 566 bis 567b sowie 570 entsprechend anzuwenden.
+
+(2) Auf Mietverhältnisse über Räume, die keine Wohnräume sind, sind die in Absatz 1 genannten Vorschriften sowie § 552 Abs. 1, § 555a Absatz 1 bis 3, §§ 555b, 555c Absatz 1 bis 4, § 555d Absatz 1 bis 6, § 555e Absatz 1 und 2 und § 555f entsprechend anzuwenden.

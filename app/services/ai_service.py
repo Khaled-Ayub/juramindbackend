@@ -1,14 +1,23 @@
 """
 KI-Service für JuraMind
 Unterstützt OpenAI GPT-4 und Anthropic Claude für Vertragsanalyse
+Mit optionalem RAG (Retrieval Augmented Generation)
 """
 
 from openai import AsyncOpenAI
 from anthropic import AsyncAnthropic
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List, Optional, Literal
 import json
 
 from app.core.config import settings
+
+# RAG-Import (optional, nur wenn aktiviert)
+try:
+    from app.rag.query_pipeline import analyze_contract_with_rag_async
+    from app.rag.document_store import get_document_count
+    RAG_AVAILABLE = True
+except ImportError:
+    RAG_AVAILABLE = False
 
 
 class AIService:
@@ -69,6 +78,102 @@ class AIService:
                 "model": settings.ANTHROPIC_MODEL
             })
         return available
+    
+    def is_rag_available(self, contract_type: str = "mietvertrag") -> bool:
+        """
+        Prüft ob RAG für eine Vertragsart verfügbar ist.
+        RAG ist verfügbar wenn:
+        1. RAG-Module importiert werden konnten
+        2. Mindestens ein Dokument indexiert ist
+        """
+        if not RAG_AVAILABLE:
+            return False
+        try:
+            count = get_document_count(contract_type)
+            return count > 0
+        except Exception:
+            return False
+    
+    def get_rag_status(self) -> dict:
+        """Gibt Status des RAG-Systems zurück"""
+        if not RAG_AVAILABLE:
+            return {
+                "available": False,
+                "message": "RAG-Module nicht installiert"
+            }
+        
+        try:
+            from app.rag.document_store import COLLECTIONS
+            collections = {}
+            for contract_type in COLLECTIONS.keys():
+                count = get_document_count(contract_type)
+                collections[contract_type] = count
+            
+            total = sum(collections.values())
+            return {
+                "available": total > 0,
+                "total_documents": total,
+                "collections": collections,
+                "message": f"{total} Dokumente indexiert" if total > 0 else "Keine Dokumente indexiert"
+            }
+        except Exception as e:
+            return {
+                "available": False,
+                "message": f"Fehler: {str(e)}"
+            }
+    
+    async def analyze_contract_with_rag(
+        self,
+        text: str,
+        contract_type: str = "mietvertrag",
+        provider: Literal["openai", "anthropic"] = None,
+        top_k: int = 8
+    ) -> Dict[str, Any]:
+        """
+        Analysiert einen Vertrag MIT RAG (Wissensbasis).
+        
+        Der Vertragstext wird zusammen mit relevanten Rechtsgrundlagen
+        aus der Wissensbasis an das LLM gesendet.
+        
+        Args:
+            text: Der zu analysierende Vertragstext
+            contract_type: Art des Vertrags (mietvertrag, arbeitsvertrag, etc.)
+            provider: "openai" oder "anthropic"
+            top_k: Anzahl der abzurufenden Kontext-Dokumente
+            
+        Returns:
+            Strukturiertes Analyse-Ergebnis mit Quellen
+        """
+        if not RAG_AVAILABLE:
+            raise ValueError("RAG ist nicht verfügbar. Bitte RAG-Dependencies installieren.")
+        
+        active_provider = provider or self.default_provider
+        
+        # RAG-Analyse durchführen
+        result = await analyze_contract_with_rag_async(
+            contract_text=text,
+            contract_type=contract_type,
+            llm_provider=active_provider,
+            top_k=top_k
+        )
+        
+        # Ergebnis formatieren
+        analysis = result.get("analysis", {})
+        
+        return {
+            "summary": analysis.get("summary", ""),
+            "overall_risk_level": analysis.get("overall_risk_level", "medium"),
+            "risk_score": analysis.get("risk_score", 50),
+            "clauses": analysis.get("clauses", []),
+            "missing_clauses": analysis.get("missing_clauses", []),
+            "positive_aspects": analysis.get("positive_aspects", []),
+            "recommendations": analysis.get("general_recommendations", []),
+            "sources": result.get("sources", []),
+            "model_used": result.get("model"),
+            "provider": result.get("provider"),
+            "rag_enabled": True,
+            "documents_used": result.get("documents_used", 0)
+        }
     
     async def analyze_contract(
         self,

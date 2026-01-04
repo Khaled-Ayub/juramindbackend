@@ -1,0 +1,212 @@
+# BGH-Urteile zu unwirksamen Mietvertragsklauseln
+
+## Schönheitsreparaturen
+
+### BGH VIII ZR 185/14 (18.03.2015) - Starre Renovierungsfristen unwirksam
+
+**Leitsatz:** Formularklauseln, die den Mieter zu Schönheitsreparaturen nach einem starren Fristenplan verpflichten, sind wegen unangemessener Benachteiligung des Mieters unwirksam.
+
+**Unwirksam sind Klauseln wie:**
+- "Der Mieter hat Küche, Bad und Dusche spätestens alle 3 Jahre zu renovieren."
+- "Wohn- und Schlafräume sind alle 5 Jahre zu streichen."
+- "Nebenräume sind alle 7 Jahre zu renovieren."
+
+**Begründung:** Starre Fristen berücksichtigen nicht den tatsächlichen Renovierungsbedarf. Eine Renovierungspflicht kann nur entstehen, wenn tatsächlich Renovierungsbedarf besteht.
+
+**Rechtsfolge:** Die gesamte Schönheitsreparaturklausel ist unwirksam. Der Mieter schuldet keine Schönheitsreparaturen.
+
+---
+
+### BGH VIII ZR 242/13 (06.04.2016) - Quotenklauseln unwirksam
+
+**Leitsatz:** Formularvertragliche Quotenklauseln, die den Mieter bei Beendigung des Mietverhältnisses zur anteiligen Kostentragung für Schönheitsreparaturen verpflichten, sind unwirksam.
+
+**Unwirksam sind Klauseln wie:**
+- "Bei Auszug vor Ablauf der Renovierungsfristen trägt der Mieter die Kosten anteilig."
+- "Der Mieter zahlt bei Auszug 20% der Renovierungskosten pro Jahr seit der letzten Renovierung."
+
+**Begründung:** Solche Klauseln benachteiligen den Mieter unangemessen, da sie zu einer Kostenbeteiligung führen können, obwohl keine Renovierungsarbeiten tatsächlich erforderlich sind.
+
+---
+
+### BGH VIII ZR 163/18 (08.07.2020) - Unrenoviert übernommene Wohnung
+
+**Leitsatz:** Wird dem Mieter eine unrenovierte oder renovierungsbedürftige Wohnung überlassen, ist eine Formularklausel, die dem Mieter die Schönheitsreparaturen ohne angemessenen Ausgleich auferlegt, unwirksam.
+
+**Unwirksam:** Übertragung der Schönheitsreparaturen auf den Mieter bei unrenovierter Übergabe ohne Ausgleich (z.B. mietfreie Zeit, Kostenzuschuss).
+
+---
+
+### BGH VIII ZR 277/16 (22.08.2018) - Farbwahlklauseln
+
+**Leitsatz:** Eine Klausel, die den Mieter verpflichtet, die Wohnung bei Auszug in neutralen Farben (insbesondere Weiß) zu streichen, ist unwirksam.
+
+**Unwirksam sind Klauseln wie:**
+- "Bei Auszug sind alle Räume weiß zu streichen."
+- "Die Wohnung ist in hellen, neutralen Farbtönen zurückzugeben."
+
+**Wirksam:** Während der Mietzeit darf der Mieter beliebige Farben verwenden.
+
+---
+
+## Kaution
+
+### BGH VIII ZR 344/08 (07.07.2010) - Kautionshöhe
+
+**Leitsatz:** Eine Mietsicherheit darf maximal drei Nettokaltmieten betragen (§ 551 Abs. 1 BGB).
+
+**Unwirksam:**
+- Kaution über drei Monatskaltmieten
+- Einbeziehung von Betriebskosten in die Kautionsberechnung
+
+**Rechtsfolge:** Vereinbarungen über höhere Kautionen sind nur insoweit unwirksam, als sie drei Monatsmieten übersteigen.
+
+---
+
+### BGH VIII ZR 86/13 (25.06.2014) - Barkaution
+
+**Leitsatz:** Der Mieter hat das Recht, zwischen verschiedenen Formen der Sicherheitsleistung zu wählen. Eine Klausel, die ausschließlich Barkaution vorsieht, ist unwirksam.
+
+**Wirksame Alternativen zur Barkaution:**
+- Bankbürgschaft
+- Mietkautionsversicherung
+- Sparbuch mit Sperrvermerk
+
+---
+
+### BGH VIII ZR 319/15 (09.11.2016) - Verzinsung der Kaution
+
+**Leitsatz:** Der Vermieter ist verpflichtet, die Kaution getrennt von seinem Vermögen anzulegen und die Zinserträge dem Mieter gutzuschreiben.
+
+**Unwirksam:** Klauseln, die einen Verzicht auf Verzinsung vorsehen.
+
+---
+
+## Tierhaltung
+
+### BGH VIII ZR 168/12 (20.03.2013) - Tierhaltungsverbot
+
+**Leitsatz:** Ein formularmäßiges Verbot der Haltung von Hunden und Katzen in einer Mietwohnung ist unwirksam, wenn es keine Ausnahme für den Einzelfall vorsieht.
+
+**Unwirksam:**
+- "Tierhaltung ist generell untersagt."
+- "Die Haltung von Hunden und Katzen ist verboten."
+
+**Wirksam:**
+- "Die Haltung von Hunden und Katzen bedarf der vorherigen Zustimmung des Vermieters."
+- Kleintiere (Hamster, Zierfische, Vögel) dürfen generell ohne Erlaubnis gehalten werden.
+
+**Prüfungsmaßstab:** Im Einzelfall ist eine Interessenabwägung vorzunehmen (Größe der Wohnung, Anzahl der Tiere, Lärmbelästigung, etc.).
+
+---
+
+## Betriebskosten
+
+### BGH VIII ZR 137/15 (10.02.2016) - Nicht umlagefähige Kosten
+
+**Leitsatz:** Nur die in der Betriebskostenverordnung (BetrKV) genannten Kosten sind auf den Mieter umlagefähig.
+
+**Nicht umlagefähig (unwirksam wenn vereinbart):**
+- Verwaltungskosten
+- Instandhaltungskosten
+- Instandhaltungsrücklagen
+- Reparaturkosten
+- Bankgebühren des Vermieters
+- Kosten für Rechtsstreitigkeiten
+
+---
+
+### BGH VIII ZR 340/18 (05.12.2018) - Wirtschaftlichkeitsgebot
+
+**Leitsatz:** Der Vermieter muss bei Betriebskosten das Gebot der Wirtschaftlichkeit beachten. Überhöhte Kosten können nicht umgelegt werden.
+
+---
+
+## Kündigung
+
+### BGH VIII ZR 57/13 (15.04.2015) - Kündigungsausschluss
+
+**Leitsatz:** Ein formularmäßiger Kündigungsausschluss ist nur wirksam, wenn er höchstens vier Jahre beträgt.
+
+**Unwirksam:**
+- Kündigungsausschluss über 4 Jahre
+- Einseitiger Kündigungsausschluss nur für den Mieter
+
+**Wirksam:**
+- Beidseitiger Kündigungsausschluss bis zu 4 Jahren
+
+---
+
+### BGH VIII ZR 294/14 (11.11.2015) - Kündigungsverzicht im Formularvertrag
+
+**Leitsatz:** Ein formularmäßiger Verzicht auf das Recht zur ordentlichen Kündigung ist grundsätzlich unwirksam.
+
+---
+
+## Untervermietung
+
+### BGH VIII ZR 74/10 (11.06.2014) - Untervermietungsverbot
+
+**Leitsatz:** Ein generelles Verbot der Untervermietung ist unwirksam. Der Mieter hat nach § 553 BGB einen Anspruch auf Erlaubnis zur Untervermietung, wenn ein berechtigtes Interesse besteht.
+
+**Unwirksam:**
+- "Untervermietung ist generell untersagt."
+- "Jede Untervermietung bedarf der schriftlichen Zustimmung des Vermieters." (wenn pauschales Versagungsrecht)
+
+---
+
+## Besichtigung
+
+### BGH VIII ZR 289/13 (04.06.2014) - Besichtigungsrecht
+
+**Leitsatz:** Ein pauschales Besichtigungsrecht ohne konkreten Anlass ist unwirksam.
+
+**Unwirksam:**
+- "Der Vermieter darf die Wohnung jederzeit besichtigen."
+- "Regelmäßige Besichtigungen alle 6 Monate sind zu dulden."
+
+**Wirksam:** Besichtigung nur bei konkretem Anlass (Verkaufsabsicht, berechtigte Mängelanzeige, Zählerablesung) nach vorheriger Ankündigung.
+
+---
+
+## Kleinreparaturen
+
+### BGH VIII ZR 91/08 (06.05.2009) - Kleinreparaturklausel
+
+**Leitsatz:** Eine Kleinreparaturklausel ist nur wirksam, wenn sie:
+1. Einen Höchstbetrag pro Einzelreparatur enthält (ca. 100-120 EUR)
+2. Eine Jahreshöchstgrenze vorsieht (ca. 6-8% der Jahresmiete)
+3. Sich auf Gegenstände beschränkt, die dem häufigen Zugriff des Mieters ausgesetzt sind
+
+**Unwirksam:**
+- Keine Höchstgrenzen genannt
+- Zu hohe Einzelbeträge (über 120 EUR)
+- Keine Jahresobergrenze
+
+---
+
+## Sonstige unwirksame Klauseln
+
+### BGH VIII ZR 10/92 (30.06.1993) - Vertragsstrafe
+
+**Leitsatz:** Vertragsstrafenklauseln in Wohnraummietverträgen sind grundsätzlich unwirksam.
+
+---
+
+### BGH VIII ZR 6/04 (14.07.2004) - Endreinigung
+
+**Leitsatz:** Eine formularmäßige Endreinigungsklausel ist unwirksam, wenn sie unabhängig vom Zustand der Wohnung bei Einzug gilt.
+
+**Unwirksam:** "Der Mieter hat die Wohnung bei Auszug professionell reinigen zu lassen."
+
+---
+
+### BGH VIII ZR 181/12 (18.06.2014) - Teppichbodenreinigung
+
+**Leitsatz:** Eine Klausel, die den Mieter zur professionellen Teppichbodenreinigung bei Auszug verpflichtet, ist unwirksam.
+
+---
+
+### BGH VIII ZR 369/18 (12.03.2019) - Vormieter-Ablöse
+
+**Leitsatz:** Klauseln, die den neuen Mieter zur Übernahme von Einbauten des Vormieters verpflichten, sind unwirksam.

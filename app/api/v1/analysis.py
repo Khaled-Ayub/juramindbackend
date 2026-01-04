@@ -48,6 +48,29 @@ async def get_providers():
     }
 
 
+@router.get(
+    "/rag/status",
+    summary="RAG-Status",
+    description="Gibt Status des RAG-Systems (Wissensbasis) zurück"
+)
+async def get_rag_status():
+    """
+    Prüft ob RAG (Retrieval Augmented Generation) verfügbar ist.
+    
+    RAG ermöglicht Analysen mit Kontext aus der Wissensbasis:
+    - BGB Mietrecht
+    - BGH-Urteile
+    - Checklisten für unwirksame Klauseln
+    
+    Returns:
+        - available: Ob RAG aktiv ist
+        - total_documents: Anzahl indexierter Dokumente
+        - collections: Dokumentanzahl pro Vertragsart
+    """
+    ai_service = AIService()
+    return ai_service.get_rag_status()
+
+
 @router.post(
     "/document",
     response_model=DocumentAnalysisResponse,
@@ -150,6 +173,10 @@ async def analyze_text(
     Ideal für:
     - Copy & Paste von Vertragsklauseln
     - Schnelle Prüfung einzelner Paragraphen
+    
+    Parameter:
+    - use_rag: Wenn True, wird die Wissensbasis (BGB, Urteile) verwendet
+    - contract_type: Bestimmt welche Wissensbasis verwendet wird (mietvertrag, etc.)
     """
     # Prüfen ob User noch Analysen durchführen kann
     if not current_user.can_analyze:
@@ -158,16 +185,27 @@ async def analyze_text(
             detail=f"Monatliches Limit erreicht. Bitte upgraden Sie Ihr Abo."
         )
     
-    # KI-Analyse durchführen (synchron für kurze Texte)
+    # KI-Analyse durchführen
     ai_service = AIService()
     
     try:
-        analysis_result = await ai_service.analyze_contract(
-            text=request.text,
-            document_type=request.document_type.value,
-            analysis_type=request.analysis_type,
-            provider=request.provider  # Provider aus Request
-        )
+        # Entscheiden ob RAG oder normale Analyse
+        if request.use_rag and ai_service.is_rag_available(request.contract_type):
+            # RAG-Analyse mit Wissensbasis
+            analysis_result = await ai_service.analyze_contract_with_rag(
+                text=request.text,
+                contract_type=request.contract_type,
+                provider=request.provider,
+                top_k=request.rag_top_k or 8
+            )
+        else:
+            # Normale Analyse ohne Wissensbasis
+            analysis_result = await ai_service.analyze_contract(
+                text=request.text,
+                document_type=request.document_type.value,
+                analysis_type=request.analysis_type,
+                provider=request.provider
+            )
         
         # Nutzungszähler erhöhen
         current_user.analyses_this_month += 1
@@ -182,11 +220,16 @@ async def analyze_text(
             overall_risk_level=analysis_result.get("overall_risk_level"),
             risk_score=analysis_result.get("risk_score"),
             clauses=analysis_result.get("clauses"),
+            missing_clauses=analysis_result.get("missing_clauses"),
+            positive_aspects=analysis_result.get("positive_aspects"),
             recommendations=analysis_result.get("recommendations"),
             key_terms=analysis_result.get("key_terms"),
             model_used=analysis_result.get("model_used"),
             tokens_used=analysis_result.get("tokens_used"),
             processing_time_ms=analysis_result.get("processing_time_ms"),
+            sources=analysis_result.get("sources"),
+            rag_enabled=analysis_result.get("rag_enabled", False),
+            documents_used=analysis_result.get("documents_used", 0),
             created_at=datetime.now(timezone.utc),
             completed_at=datetime.now(timezone.utc)
         )
