@@ -51,10 +51,18 @@ class Settings(BaseSettings):
     ]
     
     # ============================================
-    # OpenAI / KI
+    # KI / LLM Provider
     # ============================================
+    # Welchen Provider nutzen: "openai" oder "anthropic"
+    AI_PROVIDER: str = "anthropic"
+    
+    # OpenAI
     OPENAI_API_KEY: str = ""
     OPENAI_MODEL: str = "gpt-4-turbo-preview"
+    
+    # Anthropic (Claude)
+    ANTHROPIC_API_KEY: str = ""
+    ANTHROPIC_MODEL: str = "claude-sonnet-4-20250514"
     
     # ============================================
     # Rate Limiting

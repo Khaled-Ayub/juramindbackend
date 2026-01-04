@@ -24,9 +24,11 @@ email-validator==2.1.0
 
 # AI / LLM
 openai==1.12.0
+anthropic==0.18.1
 tiktoken==0.5.2
 langchain==0.1.6
 langchain-openai==0.0.5
+langchain-anthropic==0.1.4
 
 # PDF Processing
 pypdf==4.0.1
