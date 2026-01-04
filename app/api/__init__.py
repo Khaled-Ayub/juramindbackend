@@ -1,0 +1,4 @@
+"""
+JuraMind API Router
+"""
+
