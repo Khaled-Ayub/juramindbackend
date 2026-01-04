@@ -12,9 +12,9 @@ from haystack.components.preprocessors import DocumentSplitter
 from haystack.components.embedders import OpenAIDocumentEmbedder
 from haystack.components.writers import DocumentWriter
 from haystack.dataclasses import Document
+from haystack.utils import Secret
 
 from .document_store import get_document_store
-from app.core.config import settings
 
 
 def create_indexing_pipeline(contract_type: str = "mietvertrag") -> Pipeline:
@@ -59,11 +59,12 @@ def create_indexing_pipeline(contract_type: str = "mietvertrag") -> Pipeline:
     
     # 3. Embeddings mit OpenAI erstellen
     # text-embedding-3-small ist kostengünstig und ausreichend präzise
+    # Secret.from_env_var löst den API-Key zur Laufzeit auf (Haystack 2.x API)
     pipeline.add_component(
         "embedder", 
         OpenAIDocumentEmbedder(
             model="text-embedding-3-small",
-            api_key=settings.OPENAI_API_KEY
+            api_key=Secret.from_env_var("OPENAI_API_KEY")
         )
     )
     

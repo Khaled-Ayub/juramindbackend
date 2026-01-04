@@ -11,6 +11,7 @@ from haystack import Pipeline
 from haystack.components.embedders import OpenAITextEmbedder
 from haystack.components.builders import PromptBuilder
 from haystack.components.generators import OpenAIGenerator
+from haystack.utils import Secret
 from haystack_integrations.components.retrievers.chroma import ChromaEmbeddingRetriever
 
 from .document_store import get_document_store
@@ -47,11 +48,12 @@ def create_rag_pipeline(
     pipeline = Pipeline()
     
     # 1. Text Embedder für den Vertragstext
+    # Secret.from_env_var löst API-Key zur Laufzeit auf (Haystack 2.x API)
     pipeline.add_component(
         "embedder",
         OpenAITextEmbedder(
             model="text-embedding-3-small",
-            api_key=settings.OPENAI_API_KEY
+            api_key=Secret.from_env_var("OPENAI_API_KEY")
         )
     )
     
@@ -72,19 +74,19 @@ def create_rag_pipeline(
     )
     
     # 4. LLM Generator
+    # Secret.from_env_var löst API-Keys zur Laufzeit auf (Haystack 2.x API)
     if llm_provider == "anthropic" and settings.ANTHROPIC_API_KEY:
-        # Anthropic Claude über OpenAI-kompatibles Interface
-        # Haystack 2.x hat native Anthropic-Unterstützung
+        # Anthropic Claude über Haystack 2.x native Unterstützung
         from haystack_integrations.components.generators.anthropic import AnthropicGenerator
         generator = AnthropicGenerator(
             model=settings.ANTHROPIC_MODEL,
-            api_key=settings.ANTHROPIC_API_KEY
+            api_key=Secret.from_env_var("ANTHROPIC_API_KEY")
         )
     else:
         # OpenAI GPT-4
         generator = OpenAIGenerator(
             model=settings.OPENAI_MODEL,
-            api_key=settings.OPENAI_API_KEY,
+            api_key=Secret.from_env_var("OPENAI_API_KEY"),
             generation_kwargs={
                 "temperature": 0.3,  # Niedrig für konsistente Analyse
                 "max_tokens": 4000
