@@ -164,6 +164,10 @@ class AnalysisRequest(BaseModel):
         default="de",
         description="Sprache für die Analyse"
     )
+    provider: Optional[str] = Field(
+        default=None,
+        description="KI-Provider: 'openai' oder 'anthropic' (Standard aus Config)"
+    )
 
 
 class TextAnalysisRequest(BaseModel):
@@ -183,6 +187,10 @@ class TextAnalysisRequest(BaseModel):
     analysis_type: str = Field(
         default="full",
         description="Art der Analyse"
+    )
+    provider: Optional[str] = Field(
+        default=None,
+        description="KI-Provider: 'openai' oder 'anthropic' (Standard aus Config)"
     )
 
 

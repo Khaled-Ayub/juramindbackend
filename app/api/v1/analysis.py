@@ -24,6 +24,30 @@ from app.services.ai_service import AIService
 router = APIRouter()
 
 
+@router.get(
+    "/providers",
+    summary="Verfügbare KI-Provider",
+    description="Gibt Liste der konfigurierten KI-Provider zurück"
+)
+async def get_providers():
+    """
+    Gibt alle verfügbaren KI-Provider zurück.
+    
+    Der User kann im Frontend zwischen den Providern wählen:
+    - OpenAI GPT-4
+    - Anthropic Claude
+    
+    Nur Provider mit konfiguriertem API-Key werden zurückgegeben.
+    """
+    ai_service = AIService()
+    providers = ai_service.get_available_providers()
+    
+    return {
+        "providers": providers,
+        "default": ai_service.default_provider
+    }
+
+
 @router.post(
     "/document",
     response_model=DocumentAnalysisResponse,
@@ -86,7 +110,8 @@ async def analyze_document(
         analysis_id=new_analysis.id,
         document_text=document.extracted_text or "",
         analysis_type=request.analysis_type,
-        language=request.language
+        language=request.language,
+        provider=request.provider  # Provider aus Request
     )
     
     return DocumentAnalysisResponse(
@@ -140,7 +165,8 @@ async def analyze_text(
         analysis_result = await ai_service.analyze_contract(
             text=request.text,
             document_type=request.document_type.value,
-            analysis_type=request.analysis_type
+            analysis_type=request.analysis_type,
+            provider=request.provider  # Provider aus Request
         )
         
         # Nutzungszähler erhöhen
@@ -286,10 +312,14 @@ async def run_analysis(
     analysis_id: int,
     document_text: str,
     analysis_type: str,
-    language: str
+    language: str,
+    provider: str = None
 ):
     """
     Führt die eigentliche KI-Analyse im Hintergrund durch.
+    
+    Args:
+        provider: "openai" oder "anthropic" (optional)
     """
     from app.core.database import async_session_maker
     
@@ -315,7 +345,8 @@ async def run_analysis(
             result = await ai_service.analyze_contract(
                 text=document_text,
                 document_type="contract",
-                analysis_type=analysis_type
+                analysis_type=analysis_type,
+                provider=provider  # Provider aus Request
             )
             
             end_time = datetime.now(timezone.utc)

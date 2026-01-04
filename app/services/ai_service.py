@@ -19,42 +19,84 @@ class AIService:
     - OpenAI GPT-4
     - Anthropic Claude
     
+    Der Provider kann pro Request gewählt werden!
+    
     Features:
     - Klauselerkennung
     - Risikoanalyse
     - Empfehlungen
     """
     
-    def __init__(self):
+    def __init__(self, provider: str = None):
         """
-        Initialisiert den KI-Client basierend auf Konfiguration
-        """
-        self.provider = settings.AI_PROVIDER
+        Initialisiert beide KI-Clients
         
-        if self.provider == "openai":
+        Args:
+            provider: "openai" oder "anthropic" (optional, kann pro Request überschrieben werden)
+        """
+        # Standard-Provider aus Config, kann überschrieben werden
+        self.default_provider = provider or settings.AI_PROVIDER
+        
+        # Beide Clients initialisieren (falls Keys vorhanden)
+        self.openai_client = None
+        self.anthropic_client = None
+        
+        if settings.OPENAI_API_KEY:
             self.openai_client = AsyncOpenAI(api_key=settings.OPENAI_API_KEY)
-            self.model = settings.OPENAI_MODEL
-        else:  # anthropic
+        
+        if settings.ANTHROPIC_API_KEY:
             self.anthropic_client = AsyncAnthropic(api_key=settings.ANTHROPIC_API_KEY)
-            self.model = settings.ANTHROPIC_MODEL
+    
+    def _get_model(self, provider: str) -> str:
+        """Gibt das Modell für den Provider zurück"""
+        if provider == "openai":
+            return settings.OPENAI_MODEL
+        return settings.ANTHROPIC_MODEL
+    
+    def get_available_providers(self) -> list:
+        """Gibt Liste der verfügbaren Provider zurück"""
+        available = []
+        if self.openai_client:
+            available.append({
+                "id": "openai",
+                "name": "OpenAI GPT-4",
+                "model": settings.OPENAI_MODEL
+            })
+        if self.anthropic_client:
+            available.append({
+                "id": "anthropic", 
+                "name": "Anthropic Claude",
+                "model": settings.ANTHROPIC_MODEL
+            })
+        return available
     
     async def analyze_contract(
         self,
         text: str,
         document_type: str = "contract",
-        analysis_type: str = "full"
+        analysis_type: str = "full",
+        provider: str = None
     ) -> Dict[str, Any]:
         """
-        Analysiert einen Vertragstext mit dem konfigurierten KI-Provider
+        Analysiert einen Vertragstext mit dem gewählten KI-Provider
         
         Args:
             text: Der zu analysierende Vertragstext
             document_type: Art des Dokuments
             analysis_type: "full", "quick", "clauses_only"
+            provider: "openai" oder "anthropic" (überschreibt Default)
         
         Returns:
             Strukturiertes Analyse-Ergebnis
         """
+        # Provider für diesen Request bestimmen
+        active_provider = provider or self.default_provider
+        
+        # Prüfen ob Provider verfügbar
+        if active_provider == "openai" and not self.openai_client:
+            raise ValueError("OpenAI ist nicht konfiguriert (API Key fehlt)")
+        if active_provider == "anthropic" and not self.anthropic_client:
+            raise ValueError("Anthropic ist nicht konfiguriert (API Key fehlt)")
         # System-Prompt für juristische Analyse
         system_prompt = """Du bist ein erfahrener deutscher Rechtsanwalt und Vertragsexperte.
 Deine Aufgabe ist es, Verträge zu analysieren und strukturierte Bewertungen abzugeben.
@@ -104,7 +146,7 @@ Antworte IMMER im folgenden JSON-Format:
 Führe eine {analysis_type} Analyse durch und antworte im vorgegebenen JSON-Format."""
         
         try:
-            if self.provider == "openai":
+            if active_provider == "openai":
                 return await self._analyze_with_openai(system_prompt, user_prompt)
             else:
                 return await self._analyze_with_claude(system_prompt, user_prompt)
@@ -190,11 +232,20 @@ Führe eine {analysis_type} Analyse durch und antworte im vorgegebenen JSON-Form
     async def analyze_clause(
         self,
         clause_text: str,
-        context: Optional[str] = None
+        context: Optional[str] = None,
+        provider: str = None
     ) -> Dict[str, Any]:
         """
         Analysiert eine einzelne Vertragsklausel
+        
+        Args:
+            clause_text: Text der Klausel
+            context: Optionaler Kontext
+            provider: "openai" oder "anthropic"
         """
+        active_provider = provider or self.default_provider
+        model = self._get_model(active_provider)
+        
         prompt = f"""Analysiere diese Vertragsklausel nach deutschem Recht:
 
 {clause_text}
@@ -209,9 +260,9 @@ Bewerte:
 
 Antworte als JSON."""
         
-        if self.provider == "openai":
+        if active_provider == "openai":
             response = await self.openai_client.chat.completions.create(
-                model=self.model,
+                model=model,
                 messages=[{"role": "user", "content": prompt}],
                 temperature=0.3,
                 response_format={"type": "json_object"}
@@ -219,7 +270,7 @@ Antworte als JSON."""
             return json.loads(response.choices[0].message.content)
         else:
             response = await self.anthropic_client.messages.create(
-                model=self.model,
+                model=model,
                 max_tokens=2000,
                 messages=[{"role": "user", "content": prompt}]
             )
