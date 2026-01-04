@@ -159,31 +159,27 @@ async def analyze_document(
 @router.post(
     "/text",
     response_model=DocumentAnalysisResponse,
-    summary="Text direkt analysieren",
-    description="Analysiert einen Text ohne vorherigen Upload"
+    summary="Text direkt analysieren (öffentlich)",
+    description="Analysiert einen Text ohne Authentifizierung - ideal für Demos"
 )
 async def analyze_text(
-    request: TextAnalysisRequest,
-    current_user: User = Depends(get_current_user),
-    db: AsyncSession = Depends(get_db)
+    request: TextAnalysisRequest
 ):
     """
-    Analysiert einen Vertragstext direkt (ohne Datei-Upload).
+    Analysiert einen Vertragstext direkt (ohne Login erforderlich).
+    
+    Dieser Endpoint ist öffentlich zugänglich für Demo-Zwecke.
     
     Ideal für:
     - Copy & Paste von Vertragsklauseln
     - Schnelle Prüfung einzelner Paragraphen
+    - Demo ohne Registrierung
     
     Parameter:
     - use_rag: Wenn True, wird die Wissensbasis (BGB, Urteile) verwendet
     - contract_type: Bestimmt welche Wissensbasis verwendet wird (mietvertrag, etc.)
     """
-    # Prüfen ob User noch Analysen durchführen kann
-    if not current_user.can_analyze:
-        raise HTTPException(
-            status_code=status.HTTP_402_PAYMENT_REQUIRED,
-            detail=f"Monatliches Limit erreicht. Bitte upgraden Sie Ihr Abo."
-        )
+    # Keine Auth erforderlich für Demo
     
     # KI-Analyse durchführen
     ai_service = AIService()
@@ -207,9 +203,7 @@ async def analyze_text(
                 provider=request.provider
             )
         
-        # Nutzungszähler erhöhen
-        current_user.analyses_this_month += 1
-        await db.commit()
+        # Kein Nutzungszähler für öffentlichen Demo-Endpoint
         
         return DocumentAnalysisResponse(
             id=0,  # Keine persistierte Analyse
