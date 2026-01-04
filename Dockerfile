@@ -36,19 +36,23 @@ COPY ./app ./app
 COPY ./alembic ./alembic
 COPY ./alembic.ini .
 
+# RAG Wissensbasis und Scripts kopieren
+COPY ./data ./data
+COPY ./scripts ./scripts
+
 # Berechtigungen setzen
 RUN chown -R juramind:juramind /app
 
 # Zu Non-root User wechseln
 USER juramind
 
-# Port freigeben
-EXPOSE 8000
+# Port freigeben (Railway nutzt PORT env variable)
+EXPOSE 8080
 
-# Health Check
+# Health Check (nutzt PORT env variable)
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
-    CMD python -c "import httpx; httpx.get('http://localhost:8000/health')" || exit 1
+    CMD python -c "import httpx; import os; httpx.get(f'http://localhost:{os.getenv(\"PORT\", 8080)}/health')" || exit 1
 
-# Anwendung starten
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Anwendung starten - nutzt PORT env variable von Railway
+CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8080}"]
 
