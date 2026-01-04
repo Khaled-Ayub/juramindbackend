@@ -45,9 +45,10 @@ class Settings(BaseSettings):
     # CORS (Frontend URLs)
     # ============================================
     CORS_ORIGINS: List[str] = [
-        "http://localhost:3000",      # Next.js Dev
+        "http://localhost:3000",       # Next.js Dev
         "http://localhost:8080",       # Vite Dev
-        "https://juramind.vercel.app", # Production
+        "https://juramind.vercel.app", # Vercel
+        "https://juramind.flowedge.de", # Production (FlowEdge)
     ]
     
     # ============================================
