@@ -47,6 +47,12 @@ COPY ./alembic.ini .
 COPY ./data ./data
 COPY ./scripts ./scripts
 
+# Startup-Script ausführbar machen
+RUN chmod +x /app/scripts/startup.sh
+
+# ChromaDB Verzeichnis erstellen (für RAG-Daten)
+RUN mkdir -p /app/chroma_db
+
 # Berechtigungen setzen
 RUN chown -R juramind:juramind /app
 
@@ -57,9 +63,10 @@ USER juramind
 EXPOSE 8080
 
 # Health Check (nutzt PORT env variable)
-HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
+# Längerer start-period für RAG-Indexierung
+HEALTHCHECK --interval=30s --timeout=30s --start-period=120s --retries=3 \
     CMD python -c "import httpx; import os; httpx.get(f'http://localhost:{os.getenv(\"PORT\", 8080)}/health')" || exit 1
 
-# Anwendung starten - nutzt PORT env variable von Railway
-CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8080}"]
+# Startup-Script: Indexiert RAG, dann startet uvicorn
+CMD ["/app/scripts/startup.sh"]
 
