@@ -23,9 +23,16 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Non-root User für Sicherheit
+# Non-root User für Sicherheit mit Home-Verzeichnis
+# Home-Verzeichnis wird benötigt für Haystack/Posthog Telemetrie-Config
 RUN addgroup --system --gid 1001 juramind && \
-    adduser --system --uid 1001 --gid 1001 juramind
+    adduser --system --uid 1001 --gid 1001 --home /home/juramind juramind && \
+    mkdir -p /home/juramind && \
+    chown -R juramind:juramind /home/juramind
+
+# Haystack Telemetrie deaktivieren (vermeidet Permission-Probleme)
+ENV HAYSTACK_TELEMETRY_ENABLED=false
+ENV DO_NOT_TRACK=1
 
 # Dependencies aus Builder kopieren
 COPY --from=builder /app/wheels /wheels
