@@ -39,6 +39,8 @@ langchain-anthropic>=0.1.0,<2.0.0
 # RAG mit Haystack 2.x und ChromaDB
 haystack-ai>=2.0.0,<3.0.0
 chroma-haystack>=0.3.0,<4.0.0
+# Anthropic Generator für Haystack
+anthropic-haystack>=1.0.0
 # NLTK wird von Haystack DocumentSplitter benötigt
 nltk>=3.9.1
 
