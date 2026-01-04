@@ -4,7 +4,6 @@ Lädt Umgebungsvariablen und definiert App-Settings
 """
 
 import json
-from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from functools import lru_cache
 from typing import List
@@ -55,50 +54,41 @@ class Settings(BaseSettings):
     # ============================================
     # CORS (Frontend URLs)
     # ============================================
-    # Achtung: Pydantic Settings erwartet für List[str] standardmäßig JSON aus ENV.
-    # In Railway wird oft ein kommaseparierter String gepflegt -> wir parsen beides.
-    CORS_ORIGINS: List[str] = DEFAULT_CORS_ORIGINS
-
-    @field_validator("CORS_ORIGINS", mode="before")
-    @classmethod
-    def _parse_cors_origins(cls, v):
+    # WICHTIG: Typ ist str um pydantic-settings JSON-Parsing zu umgehen.
+    # Wird intern zu List[str] konvertiert via Property.
+    CORS_ORIGINS: str = ""
+    
+    @property
+    def cors_origins_list(self) -> List[str]:
         """
-        Akzeptiert folgende Formate:
+        Gibt CORS_ORIGINS als Liste zurück.
+        Akzeptiert folgende Formate in der ENV:
         - JSON: ["https://a.de","https://b.de"]
         - Komma-separiert: https://a.de,https://b.de
         - Stern: *
-        - Leer/None: nutzt DEFAULT_CORS_ORIGINS
+        - Leer: nutzt DEFAULT_CORS_ORIGINS
         """
-        if v is None:
+        v = self.CORS_ORIGINS
+        
+        if not v or v.strip() == "":
             return list(DEFAULT_CORS_ORIGINS)
-
-        # Falls bereits als Liste geliefert (z.B. aus Code / Tests)
-        if isinstance(v, (list, tuple, set)):
-            return [str(x).strip() for x in v if str(x).strip()]
-
-        if isinstance(v, str):
-            s = v.strip()
-            if s == "":
-                return list(DEFAULT_CORS_ORIGINS)
-            if s == "*":
-                return ["*"]
-
-            # Wenn JSON übergeben wurde, bevorzugt das verwenden
-            # (Railway/ENV kann auch Anführungszeichen enthalten)
-            if s.startswith("["):
-                try:
-                    loaded = json.loads(s)
-                    if isinstance(loaded, list):
-                        return [str(x).strip() for x in loaded if str(x).strip()]
-                except Exception:
-                    # Fallback: weiter unten als CSV behandeln
-                    pass
-
-            # CSV-Fallback
-            return [p.strip() for p in s.split(",") if p.strip()]
-
-        # Fallback: pydantic soll selbst versuchen zu casten
-        return v
+        
+        s = v.strip()
+        
+        if s == "*":
+            return ["*"]
+        
+        # JSON-Format versuchen
+        if s.startswith("["):
+            try:
+                loaded = json.loads(s)
+                if isinstance(loaded, list):
+                    return [str(x).strip() for x in loaded if str(x).strip()]
+            except Exception:
+                pass
+        
+        # CSV-Fallback (kommasepariert)
+        return [p.strip() for p in s.split(",") if p.strip()]
     
     # ============================================
     # KI / LLM Provider
